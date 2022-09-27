@@ -1,87 +1,75 @@
 ```
-HTML elements needed
-  Title
-  Container1
-    input for zip
-    submit button
-  Container2
-    header for location
-    location info
-  Container3
-    row1
-      header for temperature
-    row2
-      kelvin
-      farenheitt
-      celcius
-  Container4
-    row1
-      header for condition
-    row2
-      condition info
-  Container5
-    dynamic images
+install axios
 
-JAVASCRIPT
+HTML
+  ref axios
+  ref main js
+  ref styles
+  ref bootstrap
+
+GLOBAL VARIABLES
+ 
+body = html body element
+APIKey = "key goes here"
+location = element by id
+tempK = element by id
+tempF = element by id
+tempC = element by id
+condition = element by id
+
+
+FUNCTIONS
   
-  INIT
+  createElements
+    Container1 - fluid - text to left
+      Title
+    Container2 
+      input for zip
+      submit button
+    Container3
+      header for location
+      location info
+    Container4
+      row1
+        header for temperature
+      row2
+        kelvin
+        farenheitt
+        celcius
+    Container5
+      row1
+        header for condition
+      row2
+        condition info
+    Container6
+      dynamic images
   
-  body = html body element
-  APIKey = "key goes here"
-   init function  
-     create elements
-      header/assign id
-      zip input/assign id
-      submit button/assign id
-     appened to body
+  buttonClick
+    get ZIP value from input
+    validate input
+    push value to getData
+    handleError
+    
+  getData
+    get objects
+    populate state with values
   
-  FUNCTIONS
-    
-    createElements
-    Title
-  Container1
-    input for zip
-    submit button
-  Container2
-    header for location
-    location info
-  Container3
-    row1
-      header for temperature
-    row2
-      kelvin
-      farenheitt
-      celcius
-  Container4
-    row1
-      header for condition
-    row2
-      condition info
-  Container5
-    dynamic images
-    
-    buttonClick
-      get ZIP from input
-      validate input
-      push value to getData
-      handleError
-      
-    getData
-      get objects
-      populate state with values
-      
-    tempCOnvert
-    
-    condition2Image
-    
-    clearDOM
-    
-  OBJECT
-    state = {
-      location
-      temperature
-       kelvin
-       farenheitt
-       celcius
-      condition
+  condition2Image
+    EX: value includes 'raining' -> populate with rain image
+  
+  clearDOM
+    set all states back to null
+    reflow dom?
+  
+OBJECTS
+
+  state = {
+    location - straight value
+    kelvin - staight value
+    farenheitt - ((Kelvin − 273.15) × 9/5) + 32
+    celcius - Kelvin − 273.15
+    condition - straight value
+    image - condition2Image
+
+FLOW
 ```
