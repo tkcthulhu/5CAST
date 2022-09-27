@@ -91,6 +91,6 @@ FLOW
   input pushes zip value to the getData function
   getData runs and pushes the info to weatherData
   weatherData is used to populate weatherInfo
-  condition2Image runs and applies appropriate image
+  condition2Image runs and applies appropriate image and styles to the page
 
 ```
