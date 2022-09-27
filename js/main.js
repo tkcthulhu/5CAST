@@ -1,13 +1,5 @@
 const body = document.querySelector('body');
 const APIKey = 'ef757abcb72ab4e6058f4663f531b267';
-let input = document.getElementById('input');
-let API = `https://api.openweathermap.org/data/2.5/weather?zip=${userInput}&appid=${APIKey}`;
-let loc = document.getElementById('loc');
-let tempK = document.getElementById('tempK');
-let tempF = document.getElementById('tempF');
-let tempC = document.getElementById('tempC');
-let condition = document.getElementById('condition');
-let image = document.getElementById('image');
 
 // let weatherInfo = {
 //     loc: ,;
@@ -121,3 +113,13 @@ function createElements() {
 }
 
 createElements();
+
+let input = document.getElementById('input');
+let loc = document.getElementById('loc');
+let tempK = document.getElementById('tempK');
+let tempF = document.getElementById('tempF');
+let tempC = document.getElementById('tempC');
+let condition = document.getElementById('condition');
+let image = document.getElementById('image');
+const userInput = input.value;
+let API = `https://api.openweathermap.org/data/2.5/weather?zip=${userInput}&appid=${APIKey}`;
