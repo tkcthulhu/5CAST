@@ -2,15 +2,17 @@
 install axios
 
 HTML
-  ref axios
-  ref main js
-  ref styles
-  ref bootstrap
+  ref axios [X]
+  ref main js [X]
+  ref styles [X]
+  ref bootstrap [X]
 
 GLOBAL VARIABLES
  
 body = html body element
 APIKey = "key goes here"
+countryCode = "country code here"
+weatherData = WEATHEROBJECT{}
 location = element by id
 tempK = element by id
 tempF = element by id
@@ -26,9 +28,12 @@ FUNCTIONS
     Container2 
       input for zip
       submit button
+        add listener for click -> submit()
     Container3
-      header for location
-      location info
+      row1
+        header for location
+      row2
+        location info
     Container4
       row1
         header for temperature
@@ -43,15 +48,19 @@ FUNCTIONS
         condition info
     Container6
       dynamic images
+    Append all to body
+    apply appropriate class to all
   
-  buttonClick
+  Submit
     get ZIP value from input
     validate input
     push value to getData
     handleError
     
   getData
+    https://api.openweathermap.org/data/2.5/weather?zip={USERINPUT},{country code}&appid={API key}
     get objects
+    push to global variable
     populate state with values
   
   condition2Image
@@ -63,7 +72,7 @@ FUNCTIONS
   
 OBJECTS
 
-  state = {
+  weatherInfo = {
     location - straight value
     kelvin - staight value
     farenheitt - ((Kelvin − 273.15) × 9/5) + 32
@@ -72,4 +81,16 @@ OBJECTS
     image - condition2Image
 
 FLOW
+
+  initialize page with html elements
+  visibility = hidden on (location, temps, condition, image)
+  user inputs zip code
+  zip is verified
+   IF invalid return error
+   ELSE continue
+  input pushes zip value to the getData function
+  getData runs and pushes the info to weatherData
+  weatherData is used to populate weatherInfo
+  condition2Image runs and applies appropriate image and styles to the page
+
 ```
