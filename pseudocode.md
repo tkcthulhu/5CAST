@@ -51,6 +51,8 @@ FUNCTIONS
     Append all to body
     apply appropriate class to all
   
+  Create function to do all of that ^
+
   Submit
     get ZIP value from input
     validate input
@@ -63,6 +65,8 @@ FUNCTIONS
     push to global variable
     populate state with values
   
+  create function to hide and unhide elements
+
   condition2Image
     EX: value includes 'raining' -> populate with rain image
   
@@ -92,5 +96,15 @@ FLOW
   getData runs and pushes the info to weatherData
   weatherData is used to populate weatherInfo
   condition2Image runs and applies appropriate image and styles to the page
+  profit??
 
+
+IDEAS
+
+  image changy thing
+    if condition contains clouds show cloud background ect.
+
+  thermometer
+    draw a thermometer
+    fill to % based on temperature (in f)
 ```
