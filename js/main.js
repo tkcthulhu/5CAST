@@ -1,4 +1,3 @@
-const body = document.querySelector('body');
 const APIKey = 'ef757abcb72ab4e6058f4663f531b267';
 
 // let weatherInfo = {
@@ -10,116 +9,55 @@ const APIKey = 'ef757abcb72ab4e6058f4663f531b267';
 //     img: ,;
 // };
 
-function createElements() {
-    headCol = document.createElement('div');
-        headCol.className = 'container-fluid';
-        headCol.id = 'headCol';
-        body.appendChild(headCol);  
-        HC = document.getElementById('headCol');
-        HC.innerText = '5CAST'
-
-    zipCol = document.createElement('div');
-        zipCol.className = 'container d-flex';
-        zipCol.id = 'zipCol';
-        body.appendChild(zipCol);
-        ZC = document.getElementById('zipCol');
-            input = document.createElement('input');
-                input.className = 'col-3';
-                input.id = 'input';
-                input.type = 'number';
-                ZC.appendChild(input)
-            submit = document.createElement('button');
-                submit.innerText = 'Get Your 5CAST!';
-                submit.className = 'col-3';
-                ZC.appendChild(submit);
-
-    locCol = document.createElement('div');
-        locCol.className = 'container d-flex';
-        locCol.id = 'locCol';
-        body.appendChild(locCol);
-        LC = document.getElementById('locCol');
-            locRow1 = document.createElement('div');
-                locRow1.innerText ='LOCATION:'
-                locRow1.className = 'row-12 d-flex';
-                locRow1.id = 'locRow1';
-                LR1 = document.getElementById('locRow1');
-                LC.appendChild(locRow1)
-            locRow2 = document.createElement('div');
-                locRow2.innerText ='info'
-                locRow2.className = 'row-12 d-flex';
-                locRow2.id = 'locRow2';
-                LC.appendChild(locRow2);
-                LR2 = document.getElementById('locRow2');
-                    loc = document.createElement('div');
-                        loc.id = 'loc';
-                        LR2.appendChild(loc);
-
-    tempCol = document.createElement('div');
-        tempCol.className = 'container d-flex';
-        tempCol.id = 'tempCol';
-        body.appendChild(tempCol);
-        TC = document.getElementById('tempCol');
-            tempRow1 = document.createElement('div');
-                tempRow1.innerText ='TEMPERATURE:'
-                tempRow1.className = 'row-12 d-flex';
-                tempRow1.id = 'tempRow1';
-                TC.appendChild(tempRow1);
-                TR1 = document.getElementById('tempRow1');
-            tempRow2 = document.createElement('div');
-                tempRow2.innerText ='info'
-                tempRow2.className = 'row-12 d-flex';
-                tempRow2.id = 'tempRow2';
-                TC.appendChild(tempRow2);
-                TR2 = document.getElementById('tempRow2');
-                    tempK = document.createElement('div');
-                    tempK.id = 'tempK';
-                    TR2.appendChild(tempK);
-                    tempF = document.createElement('div');
-                    tempF.id = 'tempF';
-                    TR2.appendChild(tempF);
-                    tempC = document.createElement('div');
-                    tempC.id = 'tempC';
-                    TR2.appendChild(tempC);
-    
-    conCol = document.createElement('div');
-        conCol.className = 'container d-flex';
-        conCol.id = 'conCol';
-        body.appendChild(conCol);
-        CC = document.getElementById('conCol');
-                conRow1 = document.createElement('div');
-                    conRow1.innerText ='CONDITION:'
-                    conRow1.className = 'row-12 d-flex';
-                    conRow1.id = 'conRow1';
-                    CC.appendChild(conRow1);
-                    CR1 = document.getElementById('conRow1');
-                conRow2 = document.createElement('div');
-                    conRow2.innerText ='info'
-                    conRow2.className = 'row-12 d-flex';
-                    conRow2.id = 'conRow2';
-                    CC.appendChild(conRow2);
-                    CR2 = document.getElementById('conRow2');
-                        condition = document.createElement('div');
-                        condition.id = 'condtion'
-                        CR2.appendChild(condition);
-    
-    imgCol = document.createElement('div');
-        imgCol.className = 'container d-flex';
-        imgCol.id = 'imgCol';
-        body.appendChild(imgCol);
-        IC = document.getElementById('imgCol');
-            image = document.createElement('div');
-            image.id = 'image';
-            IC.appendChild(image);    
+function createElement(name, aType, cName, eId, bType, parent, text, varName) {
+    name = document.createElement(aType);
+        name.className = cName;
+        name.id = eId;
+        name.type = bType;
+        parent.appendChild(name);
+        name.innerText = text;
+        //square brackets are used here to allow a parameter to be passed in dynamically
+        window[varName] = document.getElementById(eId);
 }
 
-createElements();
+function createPage() {
+    window.body = document.querySelector('body');
+    createElement('headCol', 'div', 'container-fluid', 'headCol', null, body, '5CAST', 'HC');
+    createElement('zipCol', 'div', 'container d-flex', 'zipCol', null, body, null, 'ZC');
+    createElement('input', 'input', 'col-3', 'input', 'number', ZC, null, 'input');
+    createElement('submit', 'button', 'col-3', 'goButton', null, ZC, 'Get your 5CAST!', 'goButton');
+    createElement('loCol', 'div', 'container d-flex', 'locCol', null, body, null, 'LC');
+    createElement('locRow1', 'div', 'row', 'locRow1', null, LC, 'LOCATION:', 'LR1');
+    createElement('locRow2', 'div', 'row', 'locRow2', null, LC, null, 'LR2');
+    createElement('loc', 'div', 'col', 'loc', null, LR2, null, 'loc');
+    createElement('tempCol', 'div', 'container d-flex', 'tempCol', null, body, null, 'TC');
+    createElement('tempRow1', 'div', 'row', 'tempRow1', null, TC, 'TEMPERATURE:', 'TR1');
+    createElement('tempRow2', 'div', 'row', 'tempRow2', null, TC, null, 'TR2');
+    createElement('tempK', 'div', 'temps col-3', 'tempK', null, TR2, null, 'tempK');
+    createElement('tempF', 'div', 'temps col-3', 'tempF', null, TR2, null, 'tempF');
+    createElement('tempC', 'div', 'temps col-3', 'tempC', null, TR2, null, 'tempC');
+    createElement('conCol', 'div', 'container d-flex', 'conCol', null, body, null, 'CC');
+    createElement('conRow1', 'div', 'row', 'conRow1', null, CC, 'CONDITION:', 'CR1');
+    createElement('conRow2', 'div', 'row', 'conRow2', null, CC, null, 'CR2');
+    createElement('condition', 'div', 'col', 'condition', null, CR2, null, 'condition');
+    createElement('imgCol', 'div', 'container d-flex', 'imgCol', null, body, null, 'IC');
+    createElement('image', 'div', 'col', 'image', null, IC, null, 'image');
+}
 
-let input = document.getElementById('input');
-let loc = document.getElementById('loc');
-let tempK = document.getElementById('tempK');
-let tempF = document.getElementById('tempF');
-let tempC = document.getElementById('tempC');
-let condition = document.getElementById('condition');
-let image = document.getElementById('image');
+createPage();
+
 const userInput = input.value;
 let API = `https://api.openweathermap.org/data/2.5/weather?zip=${userInput}&appid=${APIKey}`;
+
+async function getWeatherData(url) {
+    try {
+      const response = await axios.get(url);
+      const userInput = input.value;
+      info.innerText = response.data.results[userInput].name;
+      console.log(response.data.results);
+    } catch (error) {
+      console.log(error);
+    }
+}
+
+goButton.addEventListener('click', () => getWeatherData(API));
