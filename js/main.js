@@ -78,7 +78,7 @@ async function getWeatherData(url) {
     weatherInfo.icon = response.data.weather[0].icon;
     weatherInfo.mCon = response.data.weather[0].main;
     
-    console.log(weatherInfo.mCon);
+    console.log(response.data);
 
     loc.innerText = weatherInfo.loc;
     tempK.innerText = `Kelvin : ${weatherInfo.K}`;
