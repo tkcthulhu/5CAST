@@ -22,6 +22,7 @@ body {
 
 .card {
     opacity: 70%;
+    
 }
 
 #goButton {
@@ -113,8 +114,9 @@ body {
 
 .popUp {
     position: absolute;
-    top: 30vh;
-    left: 35vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     opacity: 100%;
 }
 
