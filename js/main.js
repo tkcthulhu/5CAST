@@ -47,12 +47,17 @@ function createPage() {
         createElement('cCard', 'div', 'card', 'cCard', null, CCL, null, 'cCard');
           createElement('cCardTitle', 'p', 'card-header', 'cCardTitle', null, cCard, 'CONDITION:', 'cCardTitle')
             createElement('condition', 'p', 'card-text li', 'condition', null, cCard, null, 'condition');
+  createElement('popUp', 'div', 'popUp card', 'popUp', null, body, null, 'popUp');
+    createElement('popUpText', 'h1', 'popUpText card-header', 'PUT', null, popUp, 'INVALID ZIPCODE', 'PUT');
+    createElement('popUpButton', 'button', 'btn btn-danger', 'PUB', null, popUp, 'Come on, you can do it.', 'PUB');
 
   goButton.addEventListener('click', function() {
     let zipcode = input.value
     let API = `https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&appid=${APIKey}`;
     getWeatherData(API);
   });
+
+  PUB.addEventListener('click', () => (popUpRemove()));
 }
 
 createPage();
@@ -86,7 +91,7 @@ async function getWeatherData(url) {
     unhide();
     textFadeIn();
   } catch (error) {
-    alert('INVALID ZIPCODE');
+    APIerror();
   }
 }
 
@@ -132,6 +137,19 @@ function hide() {
   LC.style.visibility = 'hidden';
   TC.style.visibility = 'hidden';
   CC.style.visibility = 'hidden';
+  popUp.style.visibility = 'hidden';
+}
+
+function APIerror() {
+  popUp.style.visibility = 'visible';
+  LC.style.visibility = 'hidden';
+  TC.style.visibility = 'hidden';
+  CC.style.visibility = 'hidden';
+}
+
+function popUpRemove() {
+  console.log('go away')
+  popUp.style.visibility = 'hidden';
 }
 
 function unhide() {

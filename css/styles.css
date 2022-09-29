@@ -111,4 +111,10 @@ body {
     align-self: right;
 }
 
+.popUp {
+    position: absolute;
+    top: 30vh;
+    left: 35vw;
+    opacity: 100%;
+}
 
