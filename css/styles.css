@@ -1,5 +1,9 @@
 body {
-    background-color: white;
+    background-color: gray;
+}
+
+.card {
+    opacity: 70%;
 }
 
 #goButton {
@@ -18,7 +22,6 @@ body {
     background-color: blue;
     height: 10vh;
     width: 100vw;
-    /* text-align: center; */
     font-size: 8vh;
     font-style: italic;
     font-weight: bolder;
@@ -30,10 +33,11 @@ body {
     background-color: blue;
     color: white;
     -webkit-text-stroke: .5px black;
+    opacity: 100%;
 }
 
 .li {
-    height: 5vh;
+    height: fit-content;
     padding-top: 1vh;
     text-align: center;
 }
@@ -65,8 +69,8 @@ body {
 }
 
 .row {
-    height: 10vh;
-    width: 100vw;
+    /* height: 10vh; */
+    /* width: 100vw; */
     justify-content: center;
     justify-items: center;
     text-align: center;
@@ -77,4 +81,14 @@ body {
 .col {
     justify-content: center;
     justify-items: center;
+    width: fit-content;
 }
+
+#icon {
+    opacity: 100%;
+    background-color: rgba(128, 128, 128, 0.462);
+    border-radius: 50%;
+    align-self: right;
+}
+
+

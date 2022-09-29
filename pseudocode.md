@@ -11,7 +11,6 @@ GLOBAL VARIABLES
  
 body = html body element
 APIKey = "key goes here"
-countryCode = "country code here"
 weatherData = WEATHEROBJECT{}
 location = element by id
 tempK = element by id
@@ -101,10 +100,42 @@ FLOW
 
 IDEAS
 
+  geolocation
+    
+    After createPage request location data from user
+    
+    IF user allows location, load page with weather data already populated
+      gather lat/long from geo API object
+      call weather API 
+      get values and set equal to variables
+      unhide elements
+    
+    ELSE not load page ready for input
+
+
   image changy thing
     if condition contains clouds show cloud background ect.
 
   thermometer
     draw a thermometer
     fill to % based on temperature (in f)
+
+  icons
+
+    ICON REF
+      01d = clear day
+      01n = clear night
+      03d = scattered clouds
+      04d = broken clouds
+      09d = shower rain
+      10d = rain day
+      10n = rain night
+      11d = thunderstorm
+      13d = snow
+      50d = mist
+
+    ICON = API -> weather -> icon
+    set object value for icon (null)
+    pull on API request and concatenate API image value to file path
+  
 ```
