@@ -1,3 +1,21 @@
+@keyframes fadeIn { 
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+    } 
+
+@keyframes fadeOut {
+    100% { opacity: 1; }
+    0% { opacity: 0;}
+}
+
+.fadeIn {
+    animation: fadeIn 3s;
+}
+
+.fadeOut {
+    animation: fadeOut 3s;
+}
+
 body {
     background-color: gray;
 }
@@ -39,16 +57,18 @@ body {
 .li {
     height: fit-content;
     padding-top: 1vh;
+    padding-bottom: 1vh;
     text-align: center;
 }
 
-#locCon {
+/* #locCon {
     height: 10vh;
 }
 
 #tempCon {
     height: 20vh;
-}
+} */
+
 #subHead {
     background-color: red;
     font-weight: bold;

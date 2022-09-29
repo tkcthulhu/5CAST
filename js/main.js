@@ -5,7 +5,7 @@ let weatherInfo = {
     C: null,
     con: null,
     icon: null, 
-    img: null,
+    mCon: null,
 };
 
 function createElement(name, aType, cName, eId, bType, parent, text, varName) {
@@ -56,6 +56,7 @@ function createPage() {
 }
 
 createPage();
+textFadeIn();
 hide();
 GeoSafari();
 
@@ -70,20 +71,61 @@ async function getWeatherData(url) {
     weatherInfo.C = Math.round(weatherInfo.K - 273.15);
     weatherInfo.con = response.data.weather[0].description;
     weatherInfo.icon = response.data.weather[0].icon;
-    console.log(weatherInfo.icon)
+    weatherInfo.mCon = response.data.weather[0].main;
     
+    console.log(weatherInfo.mCon);
+
     loc.innerText = weatherInfo.loc;
     tempK.innerText = `Kelvin : ${weatherInfo.K}`;
     tempF.innerText = `Fahrenheit : ${weatherInfo.F}`;
     tempC.innerText = `Celcius : ${weatherInfo.C}`;
     condition.innerHTML = `${weatherInfo.con} <img src='./img/${weatherInfo.icon}.png' id="icon">`;
-    // icon.innerHTML = `./img/${weatherInfo.icon}.png`
+    
+    textFadeOut();
+    backgroundChange(weatherInfo.mCon);
     unhide();
-    // console.log(response.data);
-    // console.log(weatherInfo)
+    textFadeIn();
   } catch (error) {
     alert('INVALID ZIPCODE');
   }
+}
+
+function backgroundColor(color) {
+  body.style['background-color'] = color;
+}
+
+
+
+function backgroundChange(mainCondition) {
+  console.log(weatherInfo.mCon)
+  void body.offsetWidth;
+  switch (mainCondition) {
+    case 'Clear': 
+      backgroundColor('paleturquoise');
+      body.classList.add('fadeIn')
+      break;
+    case 'Clouds': 
+      backgroundColor('lightslategrey');
+      body.classList.add('fadeIn')
+      break;
+    case 'Snow': 
+      backgroundColor('mintcream');
+      body.classList.add('fadeIn')
+      break;
+    case 'Thunderstrom': 
+      backgroundColor('midnightblue');
+      body.classList.add('fadeIn')
+      break;
+    case 'Drizzle': 
+      backgroundColor('steelblue');
+      body.classList.add('fadeIn')
+      break;
+    case 'Rain': 
+      backgroundColor('gray');
+      body.classList.add('fadeIn')
+      break;
+  }
+  setTimeout(body.classList.remove('fadeIn'), 3000)
 }
 
 function hide() {
@@ -110,4 +152,30 @@ function whereYouAt(position) {
   console.log( `${latitude}, ${longitude}`)
   let API = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${APIKey}`
   getWeatherData(API)
+}
+
+function textFadeIn() {
+  // trigger a DOM reflow
+  void TC.offsetWidth;
+  void LC.offsetWidth;
+  void CC.offsetWidth;
+  // add the animation class
+  TC.classList.add('fadeIn');
+  LC.classList.add('fadeIn');
+  CC.classList.add('fadeIn');
+
+  console.log('set class')
+}
+
+function textFadeOut() {
+  // trigger a DOM reflow
+  void TC.offsetWidth;
+  void LC.offsetWidth;
+  void CC.offsetWidth;
+  // add the animation class
+  TC.classList.remove('fadeIn');
+  LC.classList.remove('fadeIn');
+  CC.classList.remove('fadeIn');
+
+  console.log('remove class')
 }
