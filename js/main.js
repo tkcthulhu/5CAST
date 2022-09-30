@@ -79,6 +79,8 @@ function saveZips(zipcode) {
   }
   zips.push(zip);
   console.log(zips)
+  
+  localStorage.setItem('zipcodes', JSON.stringify(zips));
 }
 
 async function getWeatherData(url) {
@@ -92,7 +94,7 @@ async function getWeatherData(url) {
     weatherInfo.icon = response.data.weather[0].icon;
     weatherInfo.mCon = response.data.weather[0].main;
     
-    console.log(response.data);
+    console.log(weatherInfo.icon);
 
     loc.innerText = weatherInfo.loc;
     tempK.innerText = `Kelvin : ${weatherInfo.K}`;
@@ -120,6 +122,9 @@ function backgroundChange(mainCondition) {
   console.log(weatherInfo.mCon)
   void body.offsetWidth;
   switch (mainCondition) {
+    default:
+      backgroundColor('gray');
+      break;
     case 'Clear': 
       backgroundColor('paleturquoise');
       body.classList.add('fadeIn')
