@@ -55,10 +55,12 @@ function createPage() {
     let zipcode = input.value
     let API = `https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&appid=${APIKey}`;
     getWeatherData(API);
+    saveZips(zipcode);
   });
 
   input.setAttribute('placeholder', 'Gimme dem digits')
   PUB.addEventListener('click', () => (popUpRemove()));
+
 }
 
 createPage();
@@ -68,8 +70,16 @@ GeoSafari();
 
 let zips = []; 
 const APIKey = 'ef757abcb72ab4e6058f4663f531b267';
+const newsCastSound = new Audio('./sounds/News-Sound-Effect.mp3')
 
 
+function saveZips(zipcode) {
+  let zip = {
+    zip: zipcode,
+  }
+  zips.push(zip);
+  console.log(zips)
+}
 
 async function getWeatherData(url) {
   try {
@@ -94,6 +104,7 @@ async function getWeatherData(url) {
     backgroundChange(weatherInfo.mCon);
     unhide();
     textFadeIn();
+    newsCastSound.play();
   } catch (error) {
     APIerror();
   }
