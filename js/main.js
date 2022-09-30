@@ -57,6 +57,7 @@ function createPage() {
     getWeatherData(API);
   });
 
+  input.setAttribute('placeholder', 'Gimme dem digits')
   PUB.addEventListener('click', () => (popUpRemove()));
 }
 
@@ -65,7 +66,10 @@ textFadeIn();
 hide();
 GeoSafari();
 
+let zips = []; 
 const APIKey = 'ef757abcb72ab4e6058f4663f531b267';
+
+
 
 async function getWeatherData(url) {
   try {
