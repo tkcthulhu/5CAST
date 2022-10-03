@@ -1,26 +1,30 @@
+let zips = []; 
+const APIKey = 'ef757abcb72ab4e6058f4663f531b267';
+
 let weatherInfo = {
-    loc: null,
-    K: null,
-    F: null,
-    C: null,
-    con: null,
-    icon: null, 
-    mCon: null,
+    loc: '',
+    K: 0,
+    F: 0,
+    C: 0,
+    con: '',
+    icon: '', 
+    mCon: '',
 };
 
 function createElement(name, aType, cName, eId, bType, parent, text, varName) {
     name = document.createElement(aType);
-        name.className = cName;
-        name.id = eId;
-        name.type = bType;
-        parent.appendChild(name);
-        name.innerText = text;
-        //square brackets are used here to allow a parameter to be passed in dynamically
-        window[varName] = document.getElementById(eId);
+    name.className = cName;
+    name.id = eId;
+    name.type = bType;
+    parent.appendChild(name);
+    name.innerText = text;
+    //square brackets are used here to allow a parameter to be passed in dynamically
+    window[varName] = document.getElementById(eId);
 }
 
 function createPage() {
   window.body = document.querySelector('body');
+
   createElement('headCon', 'div', 'container-fluid text-white', 'headCon', null, body, '5CAST', 'HC');
   createElement('subHead', 'div', 'container-fluid text-white', 'subHead', null, body, '"Better than a forecast"', 'subHead');
   createElement('zipCon', 'div', 'container d-flex', 'zipCon', null, body, null, 'ZC');
@@ -51,7 +55,7 @@ function createPage() {
     createElement('popUpText', 'h1', 'popUpText card-header', 'PUT', null, popUp, 'INVALID ZIPCODE', 'PUT');
     createElement('popUpButton', 'button', 'btn btn-danger', 'PUB', null, popUp, 'Come on, you can do it.', 'PUB');
 
-  goButton.addEventListener('click', function() {
+  goButton.addEventListener('click', () => {
     let zipcode = input.value
     let API = `https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&appid=${APIKey}`;
     getWeatherData(API);
@@ -59,17 +63,19 @@ function createPage() {
   });
 
   input.setAttribute('placeholder', 'Gimme dem digits')
-  PUB.addEventListener('click', () => (popUpRemove()));
+  PUB.addEventListener('click', () => popUpRemove);
 
 }
 
+function INIT() {
 createPage();
 textFadeIn();
 hide();
-GeoSafari();
+geoSafari();
+}
 
-let zips = []; 
-const APIKey = 'ef757abcb72ab4e6058f4663f531b267';
+INIT(); 
+
 const newsCastSound = new Audio('./sounds/News-Sound-Effect.mp3')
 
 
@@ -94,7 +100,6 @@ async function getWeatherData(url) {
     weatherInfo.icon = response.data.weather[0].icon;
     weatherInfo.mCon = response.data.weather[0].main;
     
-    console.log(weatherInfo.icon);
 
     loc.innerText = weatherInfo.loc;
     tempK.innerText = `Kelvin : ${weatherInfo.K}`;
@@ -178,7 +183,7 @@ function unhide() {
   CC.style.visibility = 'visible';
 }
 
-function GeoSafari() {
+function geoSafari() {
   navigator.geolocation.getCurrentPosition(whereYouAt);
 }
 
@@ -187,7 +192,6 @@ function whereYouAt(position) {
     latitude,
     longitude
   } = position.coords
-  console.log( `${latitude}, ${longitude}`)
   let API = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${APIKey}`
   getWeatherData(API)
 }
@@ -201,8 +205,6 @@ function textFadeIn() {
   TC.classList.add('fadeIn');
   LC.classList.add('fadeIn');
   CC.classList.add('fadeIn');
-
-  console.log('set class')
 }
 
 function textFadeOut() {
@@ -214,6 +216,4 @@ function textFadeOut() {
   TC.classList.remove('fadeIn');
   LC.classList.remove('fadeIn');
   CC.classList.remove('fadeIn');
-
-  console.log('remove class')
 }
