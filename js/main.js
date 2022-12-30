@@ -53,7 +53,7 @@ function createPage() {
             createElement('condition', 'p', 'card-text li', 'condition', null, cCard, null, 'condition');
   createElement('popUp', 'div', 'popUp card', 'popUp', null, body, null, 'popUp');
     createElement('popUpText', 'h1', 'popUpText card-header', 'PUT', null, popUp, 'INVALID ZIPCODE', 'PUT');
-    createElement('popUpButton', 'button', 'btn btn-danger', 'PUB', null, popUp, 'Come on, you can do it.', 'PUB');
+    createElement('popUpButton', 'button', 'btn btn-danger', 'PUB', null, popUp, 'Please enter a valid zipcode to continue.', 'PUB');
 
   goButton.addEventListener('click', () => {
     let zipcode = input.value
@@ -62,7 +62,7 @@ function createPage() {
     saveZips(zipcode);
   });
 
-  input.setAttribute('placeholder', 'Gimme dem digits')
+  input.setAttribute('placeholder', 'Please enter your zipcode')
   PUB.addEventListener('click', () => popUpRemove);
 
 }
@@ -111,7 +111,7 @@ async function getWeatherData(url) {
     backgroundChange(weatherInfo.mCon);
     unhide();
     textFadeIn();
-    newsCastSound.play();
+    // newsCastSound.play();
   } catch (error) {
     APIerror();
   }
